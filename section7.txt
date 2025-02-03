@@ -1,0 +1,2 @@
+8. Генераторы словарей:
+- `{key: value for key, value in iterable}`

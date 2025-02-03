@@ -1,0 +1,2 @@
+9. Сортировка словаря:
+- По ключам: `sorted(dict.keys())` или `dict(sorted(dict.items()))`
