@@ -50,7 +50,7 @@ class TheoryWin(QWidget):
         layout.addWidget(self.theory_text)
         layout.addWidget(self.btn_next, alignment=Qt.AlignCenter)
         self.setLayout(layout)
-
+#Добавленный Тест win
     def next_click(self):
         self.tw = TestWin()
         self.hide()

@@ -1,10 +1,10 @@
 from PyQt5.QtWidgets import *
 from final_win import FinalWin
-
+#Чёто
 class TestWin(QWidget):
     def __init__(self):
         super().__init__()
-        self.setGeometry(100, 100, 600, 400)  # Увеличиваем размер окна для удобства
+        self.setGeometry(100, 100, 600, 400)
         self.setWindowTitle("Тест по словарям")
         self.initUI()
         self.connects()
