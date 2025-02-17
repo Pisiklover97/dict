@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
-from second_win import TestWin
 
 class TheoryWin(QWidget):
     def __init__(self):
@@ -13,7 +12,7 @@ class TheoryWin(QWidget):
 
     def initUI(self):
         self.theory_text = QTextEdit(self)
-        self.theory_text.setReadOnly(True)  # Запрещаем редактирование
+        self.theory_text.setReadOnly(True)
         self.theory_text.setPlainText(
             "Теория по словарям в Python:\n\n"
             "1. Объявление словаря:\n"
@@ -50,10 +49,11 @@ class TheoryWin(QWidget):
         layout.addWidget(self.theory_text)
         layout.addWidget(self.btn_next, alignment=Qt.AlignCenter)
         self.setLayout(layout)
-#Добавленный Тест win
+
     def next_click(self):
+        from second_win import TestWin  # Локальный импорт
         self.tw = TestWin()
-        self.hide()
+        self.close()  # Закрываем текущее окно
 
     def connects(self):
         self.btn_next.clicked.connect(self.next_click)
