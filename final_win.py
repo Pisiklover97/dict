@@ -1,24 +1,32 @@
 from PyQt5.QtWidgets import *
 
 class FinalWin(QWidget):
-    def __init__(self, score):
+    def __init__(self, correct_answers, elapsed_time):
         super().__init__()
-        self.score = score
+        self.correct_answers = correct_answers
+        self.elapsed_time = elapsed_time
         self.setGeometry(100, 100, 400, 200)
-        self.setWindowTitle("Результаты теста по словарям")
+        self.setWindowTitle("Результаты теста")
         self.initUI()
         self.show()
 
     def initUI(self):
         layout = QVBoxLayout()
 
-        # Оценка знаний по словарям
-        dict_knowledge_text = "Отлично! Вы хорошо знаете словари в Python." if self.score["dict_knowledge"] > 3 else "Вам нужно подтянуть знания по словарям."
+        result_text = f"Вы правильно ответили на {self.correct_answers} вопросов из 15."
+        time_text = f"Затраченное время: {self.elapsed_time}."
 
-        # Оценка практических навыков
-        dict_practice_text = "Вы отлично справляетесь с практическими задачами по словарям!" if self.score["dict_practice"] > 2 else "Практические навыки работы со словарями требуют улучшения."
+        layout.addWidget(QLabel(result_text))
+        layout.addWidget(QLabel(time_text))
 
-        layout.addWidget(QLabel(dict_knowledge_text))
-        layout.addWidget(QLabel(dict_practice_text))
+        self.btn_back = QPushButton("Назад", self)
+        layout.addWidget(self.btn_back)
 
         self.setLayout(layout)
+
+        self.btn_back.clicked.connect(self.go_back)
+
+    def go_back(self):
+        from my_app import MainWin
+        self.main_win = MainWin()
+        self.close()

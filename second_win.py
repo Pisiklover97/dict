@@ -11,7 +11,6 @@ class TestWin(QWidget):
         self.connects()
         self.show()
 
-
     def update_timer(self):
         self.time_elapsed = self.time_elapsed.addSecs(1)  # Увеличиваем время на 1 секунду
         self.timer_label.setText(self.time_elapsed.toString("mm:ss"))
@@ -30,7 +29,7 @@ class TestWin(QWidget):
             },
             {
                 "question": "3. Как удалить элемент из словаря по ключу?",
-                "options": ["del dict[key]", "dict.pop(key)", "dict.remove(key)", "dict.delete(key)"],
+                "options": [  "dict.remove(key)", "del dict[key]", "dict.delete(key)", "dict.pop(key)"],
                 "answer": ["del dict[key]", "dict.pop(key)"]
             },
             {
@@ -44,30 +43,129 @@ class TestWin(QWidget):
                 "answer": ["dict.keys()"]
             },
             {
-                "question": "6. Как получить список всех значений словаря?",
-                "options": ["dict.values()", "dict.get_values()", "dict.all_values()", "dict.values"],
-                "answer": ["dict.values()"]
+                "question": "6. Что выведет следующий код?\n\n"
+                            "d = {'a': 1, 'b': 2, 'c': 3}\n"
+                            "print(d.get('d', 4))",
+                "options": [
+                    "Ошибка, так как ключ 'd' отсутствует",
+                    "None",
+                    "4",
+                    "Выведет {'d': 4}"
+                ],
+                "answer": ["4"]
             },
             {
-                "question": "7. Как получить список пар ключ-значение из словаря?",
-                "options": ["dict.items()", "dict.get_items()", "dict.all_items()", "dict.items"],
-                "answer": ["dict.items()"]
+                "question": "7. Что произойдет при выполнении следующего кода?\n\n"
+                            "d = {'x': 10, 'y': 20}\n"
+                            "d.update({'z': 30})\n"
+                            "print(d)",
+                "options": [
+                    "Ошибка, метод update() не существует",
+                    "{'x': 10, 'y': 20, 'z': 30}",
+                    "{'x': 10, 'y': 20}",
+                    "Будет добавлена пара ('z', 30), но print() ничего не выведет"
+                ],
+                "answer": ["{'x': 10, 'y': 20, 'z': 30}"]
             },
             {
-                "question": "8. Как объединить два словаря в один?",
-                "options": ["dict1.update(dict2)", "{**dict1, **dict2}", "dict1 + dict2", "dict1.merge(dict2)"],
-                "answer": ["dict1.update(dict2)", "{**dict1, **dict2}"]
+                "question": "8. Что произойдет при выполнении следующего кода?\n\n"
+                            "d = {'a': 5, 'b': 10}\n"
+                            "del d['b']\n"
+                            "print(d)",
+                "options": [
+                    "Ошибка, так как нельзя удалять элементы из словаря",
+                    "{'a': 5}",
+                    "{'a': 5, 'b': 10}",
+                    "Ключ 'b' будет удалён, но print() ничего не выведет"
+                ],
+                "answer": ["{'a': 5}"]
             },
             {
-                "question": "9. Как создать словарь с помощью генератора словаря?",
-                "options": ["{key: value for key, value in iterable}", "dict((key, value) for key, value in iterable)", "dict.fromkeys(iterable)", "dict.generate(key, value)"],
-                "answer": ["{key: value for key, value in iterable}"]
+                "question": "9. Что выведет следующий код?\n\n"
+                            "d = {'apple': 2, 'banana': 3}\n"
+                            "print('apple' in d)",
+                "options": [
+                    "True",
+                    "False",
+                    "None",
+                    "Ошибка"
+                ],
+                "answer": ["True"]
             },
             {
-                "question": "10. Как отсортировать словарь по ключам?",
-                "options": ["sorted(dict.keys())", "dict(sorted(dict.items()))", "dict.sort()", "dict.order_by_key()"],
-                "answer": ["sorted(dict.keys())", "dict(sorted(dict.items()))"]
+                "question": "10. Какой результат выдаст следующий код?\n\n"
+                            "d = {'x': 1, 'y': 2, 'z': 3}\n"
+                            "print(list(d.keys()))",
+                "options": [
+                    "['x', 'y', 'z']",
+                    "{'x', 'y', 'z'}",
+                    "dict_keys(['x', 'y', 'z'])",
+                    "Ошибка"
+                ],
+                "answer": ["['x', 'y', 'z']"]
             },
+            {
+                "question": "11. Какой результат будет у следующего кода?\n\n"
+                            "d = {'x': 1, 'y': 2}\n"
+                            "print(d.pop('x'))",
+                "options": [
+                    "1",
+                    "{'y': 2}",
+                    "Ошибка, метод pop() не поддерживается",
+                    "None"
+                ],
+                "answer": ["1"]
+            },
+            {
+                "question": "12. Что произойдет при выполнении следующего кода?\n\n"
+                            "d = {'a': 1, 'b': 2}\n"
+                            "print(d.items())",
+                "options": [
+                    "[('a', 1), ('b', 2)]",
+                    "dict_items([('a', 1), ('b', 2)])",
+                    "{('a', 1), ('b', 2)}",
+                    "Ошибка"
+                ],
+                "answer": ["dict_items([('a', 1), ('b', 2)])"]
+            },
+            {
+                "question": "13. Что делает следующий код?\n\n"
+                            "d1 = {'a': 1, 'b': 2}\n"
+                            "d2 = {'c': 3, 'd': 4}\n"
+                            "d = {**d1, **d2}\n"
+                            "print(d)",
+                "options": [
+                    "Объединяет d1 и d2, результат {'a': 1, 'b': 2, 'c': 3, 'd': 4}",
+                    "Ошибка, так как нельзя объединять словари таким способом",
+                    "Создаёт новый пустой словарь",
+                    "Выдаст None"
+                ],
+                "answer": ["Объединяет d1 и d2, результат {'a': 1, 'b': 2, 'c': 3, 'd': 4}"]
+            },
+            {
+                "question": "14. Что выведет следующий код?\n\n"
+                            "d = {x: x**2 for x in range(3)}\n"
+                            "print(d)",
+                "options": [
+                    "{0: 0, 1: 1, 2: 4}",
+                    "{0: 1, 1: 2, 2: 3}",
+                    "{0: 0, 1: 2, 2: 6}",
+                    "Ошибка"
+                ],
+                "answer": ["{0: 0, 1: 1, 2: 4}"]
+            },
+            {
+                "question": "15. Какой результат выдаст следующий код?\n\n"
+                            "d = {'a': 3, 'b': 1, 'c': 2}\n"
+                            "print(dict(sorted(d.items())))",
+                "options": [
+                    "{'a': 3, 'b': 1, 'c': 2}",
+                    "{'b': 1, 'c': 2, 'a': 3}",
+                    "{'c': 2, 'b': 1, 'a': 3}",
+                    "Ошибка"
+                ],
+                "answer": ["{'a': 3, 'b': 1, 'c': 2}"]
+            }
         ]
 
         self.current_question_index = 0
@@ -85,24 +183,24 @@ class TestWin(QWidget):
             self.layout.addWidget(radio_button)
             self.radio_buttons.append(radio_button)
 
-        self.btn_back = QPushButton("Назад", self)  # Кнопка "Назад"
-        self.layout.addWidget(self.btn_back)
+
 
         self.btn_next = QPushButton("Далее", self)
         self.layout.addWidget(self.btn_next)
 
+        self.btn_back = QPushButton("Назад", self)
+        self.layout.addWidget(self.btn_back)
+
         self.setLayout(self.layout)
 
         # Таймер
-        self.time_elapsed = QTime(0, 0, 0)  # Начинаем с 00:00
-        self.timer_label = QLabel(self)
+        self.time_elapsed = QTime(0, 0, 0)
+        self.timer_label = QLabel("00:00", self)
         self.layout.addWidget(self.timer_label, alignment=Qt.AlignCenter)
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_timer)
         self.timer.start(1000)
-
-
 
     def next_question(self):
         selected_button = None
@@ -131,30 +229,26 @@ class TestWin(QWidget):
     def update_question(self):
         self.question_label.setText(self.questions[self.current_question_index]["question"])
 
-        # Обновляем варианты ответов
         for i, button in enumerate(self.radio_buttons):
             if i < len(self.questions[self.current_question_index]["options"]):
                 button.setText(self.questions[self.current_question_index]["options"][i])
-                button.setChecked(False)  # Сбрасываем состояние
+                button.setChecked(False)
             else:
                 button.setText("")
                 button.setChecked(False)
 
     def check_answers(self):
-        score = {"dict_knowledge": 0, "dict_practice": 0}
+        correct_answers = sum(
+            1 for i, q in enumerate(self.questions)
+            if self.answers[i] in q["answer"]
+        )
 
-        # Проверка ответов
-        for i, q in enumerate(self.questions):
-            selected_answer = self.answers[i]
-            if selected_answer in q["answer"]:
-                if i < 2:  # Теоретические вопросы
-                    score["dict_knowledge"] += 1
-                else:  # Практические вопросы
-                    score["dict_practice"] += 1
+        elapsed_time = self.time_elapsed.toString("mm:ss")  # Конвертация времени
 
-        self.fw = FinalWin(score)
-        self.hide()
+        self.fw = FinalWin(correct_answers, elapsed_time)
+        self.fw.show()
+        self.close()  # Закрываем текущее окно
 
     def connects(self):
         self.btn_next.clicked.connect(self.next_question)
-        self.btn_back.clicked.connect(self.previous_question)  # Обработчик для кнопки "Назад"
+        self.btn_back.clicked.connect(self.previous_question)
