@@ -252,3 +252,5 @@ class TestWin(QWidget):
     def connects(self):
         self.btn_next.clicked.connect(self.next_question)
         self.btn_back.clicked.connect(self.previous_question)
+
+        ##Работай

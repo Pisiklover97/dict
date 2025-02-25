@@ -30,3 +30,5 @@ class FinalWin(QWidget):
         from my_app import MainWin
         self.main_win = MainWin()
         self.close()
+
+        ##Работай
